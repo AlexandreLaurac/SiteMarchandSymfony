@@ -1,0 +1,27 @@
+{# templates/usager/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Nouvel utilisateur
+{% endblock %}
+
+{% block body %}
+
+    {#  Premier niveau de personnalisation du formulaire d'inscription :
+            l'utilisation d'un div de class card avec header et body encadrant le formulaire lui-même 
+        Deuxième niveau de personnalisation :
+            l'utilisation du "Bootstrap 4 Form Theme" (faite dans le fichier config/packages/twig.yaml)
+        Troisième niveau :
+            voir le fichier 'usager/_form.html.twig' (2 labels en français et bouton de soumission stylisé)
+    #}
+
+    <div class="card col-md-5 offset-4">
+        <div class="card-header">
+            <h3> <i class="fas fa-user-plus"></i> Nouveau Membre ? Inscrivez-vous </h3>
+        </div>
+        <div class="card-body">        
+            {{ include('usager/_form.html.twig') }}
+        </div>
+    </div>
+
+{% endblock %}

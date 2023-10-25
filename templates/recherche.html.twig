@@ -1,0 +1,41 @@
+{# templates/recherche.html.twig #}
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Recherche "{{texte}}" 
+{% endblock %}
+
+{% block body %}
+    <div class="card col-md-12">
+        <div class="card-header">
+            <h1>
+                <i class="fas fa-store"></i>
+                Recherche "{{texte}}" : {{nbProduits}} Produit(s)
+            </h1>
+        </div>
+        <div class="card-body row">
+            {% for produit in produits %}
+                <div class="col-md-4">
+                    <div class="card clickable" onclick="location = '{{ path('panier_ajouter', {'idProduit' : produit.id, 'quantite' : 1} ) }}'">
+                        <img src="{{ asset(produit.visuel) }}" class="card-img-produit" alt="{{produit.libelle}}" />
+                        <div class="card-body">
+                            <h4 class="card-title"> {{ produit.libelle | upper }} </h4>
+                            <p class="card-text"><i> {{ produit.texte }} </i></p>
+                            <h2>
+                                <span class="badge badge-primary">
+                                    <i class="fas fa-cart-plus"></i>&nbsp;&nbsp;
+                                    {{ produit.prix | number_format(2, ',', ' ') }} €
+                                </span>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+

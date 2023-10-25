@@ -1,3 +1,73 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# config/routes.yaml
+
+# Routes liées au controleur par défaut
+index:
+    path: /{_locale}
+    controller: App\Controller\DefaultController::index
+    requirements:
+        _locale: '%app.supported_locales%'
+    defaults:
+        _locale: fr
+contact:
+    path: /{_locale}/contact
+    controller: App\Controller\DefaultController::contact
+    requirements:
+        _locale: '%app.supported_locales%'
+
+# Routes liées au controleur Boutique
+boutique:
+    path: /{_locale}/boutique
+    controller: App\Controller\BoutiqueController::index
+    requirements:
+        _locale: '%app.supported_locales%'
+rayon:
+    path: /{_locale}/rayon/{idCategorie}
+    controller: App\Controller\BoutiqueController::rayon
+    defaults:
+        idCategorie: 1
+    requirements:
+        _locale: '%app.supported_locales%'
+recherche:
+    path: /recherche/{texte}
+    controller: App\Controller\BoutiqueController::rechercher
+    defaults:
+        texte: ''
+
+# Routes liées au controleur Panier
+panier_index:
+    path: /panier
+    controller: App\Controller\PanierController::index
+panier_ajouter:
+    path: /panier/ajouter/{idProduit}/{quantite}
+    controller: App\Controller\PanierController::ajouter
+panier_enlever:
+    path: /panier/enlever/{idProduit}/{quantite}
+    controller: App\Controller\PanierController::enlever
+panier_supprimer:
+    path: /panier/supprimer/{idProduit}
+    controller: App\Controller\PanierController::supprimer
+panier_vider:
+    path: /panier/vider
+    controller: App\Controller\PanierController::vider
+panier_validation:
+    path: /panier/validation
+    controller: App\Controller\PanierController::validation
+
+# Routes liées au controleur Usager
+usager_accueil:
+    path: /usager
+    controller: App\Controller\UsagerController::index
+usager_inscription:
+    path: /new
+    controller: App\Controller\UsagerController::new
+usager_commandes:
+    path: /usager/commandes
+    controller: App\Controller\UsagerController::commandes
+
+# Routes de connexion et de déconnexion
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout

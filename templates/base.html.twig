@@ -1,19 +1,93 @@
+{# templates/base.html.twig #}
+
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Démo SF">
+        <meta name="author" content="UGA/IUT2/INFO/Philippe Martin et Alexandre Laurac LP MI/AW">
+        <link rel="icon" href="images/favicon.ico">
+
+        <title>
+            {% block title %} {% endblock %}
+        </title>
+
+        <!-- CSS : Bootstrap, Fontawsome, projet (styles communs à tout le projet) -->
+        <link href="{{ asset('css/bootstrap-4/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/fontawsome-5.all.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/projet.css') }}" rel="stylesheet">
+
+        <!-- Début du bloc CSS -->
+        {% block style %} {% endblock %} 
+        <!-- Fin du bloc CSS -->
+
+
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        #}
+
     </head>
+
+
     <body>
-        {% block body %}{% endblock %}
+
+        {# Contrôleur imbriqué dans le template pour avoir le nombre de produits dans la navbar #}
+        {{ 
+            render(
+                controller('App\\Controller\\BarController::rendreNavbar')
+            )
+        }}
+
+        <main role="main" class="container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="main-div">
+                    
+                    {# Début du block body #}
+                    {% block body %} {% endblock %}
+                    {# Fin du block body #}
+
+                    </div>
+                </div>
+
+                {# Contrôleur imbriqué dans le template pour avoir les produits les plus vendus dans la sidebar #}
+                {{ 
+                    render(
+                        controller('App\\Controller\\BarController::rendreSidebar')
+                    )
+                }}
+
+            </div>
+        </main>
+
+        <!-- JS : JQuery, Bootstrap -->
+        <script src="{{ asset ('js/jquery-3/jquery.slim.min.js')}}"></script>
+        <script src="{{ asset ('js/bootstrap-4/bootstrap.bundle.min.js')}}"></script>
+        <script>
+            $(function () {
+                // Activation tooltip bootstrap sur la page
+                $('[data-toggle="tooltip"]').tooltip();
+                // Comportement du bouton de recherche
+                $("#searchButton").click(
+                    function () {
+                        var searchString = $('#searchString').val().trim();
+                        location = ('{{ path('recherche') }}' + '/' + searchString);
+                        return false;
+                    });
+            });
+        </script>
+        
+        {# Début du bloc js #}
+        {% block js %} {% endblock %}
+        {# Fin du bloc js #}
+
     </body>
 </html>

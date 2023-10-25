@@ -1,0 +1,127 @@
+{# templates/navbar.html.twig #}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+    {# ET téléphone mèèèèèèèson #}
+    <a class="navbar-brand" href="{{path('index')}}">
+        <i class="fas fa-home"></i>
+        {% trans %} nav.maison {% endtrans %} 
+    </a>
+
+    {# ? #}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    {# Différents liens du menu de navigation #}
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            {# Boutique #}
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('boutique')}}">
+                    <i class="fas fa-store"></i>
+                    {% trans %} nav.boutique {% endtrans %} 
+                </a>
+            </li>
+            {# Panier #}
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('panier_index')}}">
+                    <i class="fas fa-shopping-cart"></i>
+                    {{ nbProduits }} {% trans %} nav.panier {% endtrans %}
+                </a>
+            </li>
+            {# Contact #}
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('contact')}}">
+                    <i class="fas fa-comments"></i>
+                    {% trans %} nav.contact {% endtrans %} 
+                </a>
+            </li>
+            {# Menu de connexion #}
+            <li class="nav-item dropdown">
+                <span class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-user{% if app.user %}-check{% endif %}"></i>
+                    {% if app.user %} {{ app.user.prenom }} {% else %} {% trans %} nav.connexion {% endtrans %} {% endif %}
+                </span>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item {% if app.user %} disabled {% endif %}" href="{{path('app_login')}}">
+                        {% trans %} nav.premier_element {% endtrans %}
+                    </a>
+                    <a class="dropdown-item {% if app.user %} disabled {% endif %}" href="{{path('usager_inscription')}}">
+                        {% trans %} nav.deuxieme_element {% endtrans %}
+                    </a>
+                    <a class="dropdown-item {% if not app.user %} disabled {% endif %}" href="{{path('usager_accueil')}}">
+                        {% trans %} nav.troisieme_element {% endtrans %}
+                    </a>
+                    <a class="dropdown-item {% if not app.user %} disabled {% endif %}" href="{{path('usager_commandes')}}">
+                        {% trans %} nav.quatrieme_element {% endtrans %}
+                    </a>
+                    <a class="dropdown-item {% if not app.user %} disabled {% endif %}" href="{{path('app_logout')}}">
+                        {% trans %} nav.cinquieme_element {% endtrans %}
+                    </a>
+                </div>
+            </li>
+            {# Back office, disponible pour l'admin seulement (mais pas encore mis en oeuvre) #}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item" data-toggle="tooltip"
+                    data-placement="right" data-html="true">
+                    <span class="nav-link" href="">
+                        <i class="fas fa-tools"></i>
+                        {% trans %} nav.backOffice {% endtrans %}
+                    </span>
+                </li>
+            {% endif %}
+        </ul>
+
+        {# Barre de recherche #}
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="searchString" type="text" placeholder="{% trans %} nav.recherche {% endtrans %}"
+                aria-label="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" id="searchButton">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+
+        {# Menu déroulant des devises #}
+        <ul class="navbar-nav my-0">
+            <li class="nav-item dropdown">
+                <span class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> EUR </span>
+                <div class="dropdown-menu" aria-labelledby="dropdown02" style="min-width: 5rem;">
+                    <a class="dropdown-item" href="{#/mi5/fr/changer_monnaie/CAD/home/%7B%22_locale%22:%22fr%22%7D#}"> CAD </a>
+                    <a class="dropdown-item" href="{#/mi5/fr/changer_monnaie/USD/home/%7B%22_locale%22:%22fr%22%7D#}"> USD </a>
+                    <a class="dropdown-item" href="{#/mi5/fr/changer_monnaie/GBP/home/%7B%22_locale%22:%22fr%22%7D#}"> GBP </a>
+                    <a class="dropdown-item" href="{#/mi5/fr/changer_monnaie/PHP/home/%7B%22_locale%22:%22fr%22%7D#}"> PHP </a>
+                    <a class="dropdown-item" href="{#/mi5/fr/changer_monnaie/IDR/home/%7B%22_locale%22:%22fr%22%7D#}"> IDR </a>
+                </div>
+            </li>
+        </ul>
+
+        {# Menu déroulant des "locales" #}
+        {% set currentLocale = app.request.attributes.get('_locale') %}
+        <ul class="navbar-nav my-0">
+            <li class="nav-item dropdown">
+                <span class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{ asset('images/locale/' ~ currentLocale ~ '.png') }}" alt="{{ currentLocale | capitalize}}">
+                </span>
+                <div class="dropdown-menu" aria-labelledby="dropdown03" style="min-width: 5rem;">
+                    {% for locale in supported_locales|split('|') %}
+                        {% if locale != currentLocale %}
+                            <a class="dropdown-item" href="{{path('index', {'_locale' : locale} ) }}">
+                                <img src="{{ asset ('images/locale/' ~ locale ~ '.png') }}" alt="{{ locale | capitalize }}">
+                            </a>
+                            {#
+                            {% set route = app.request.attributes.get('_route') %}
+                            {% set params = app.request.attributes.get('_route_params') %}
+                            <a class="dropdown-item" href="{{ path(route, params | merge({'_locale': locale })) }}">
+                                <img src="{{ asset ('images/locale/' ~ locale ~ '.png') }}" alt="{{ locale | capitalize }}">
+                            </a>
+                            #}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

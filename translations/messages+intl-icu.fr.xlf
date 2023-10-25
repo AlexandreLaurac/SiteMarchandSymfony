@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="CxMSIU9" resname="colonne.titre">
+        <source>colonne.titre</source>
+        <target>Top Ventes</target>
+      </trans-unit>
+      <trans-unit id="nFhJxab" resname="colonne.vente">
+        <source>colonne.vente</source>
+        <target>ventes</target>
+      </trans-unit>
+      <trans-unit id="iNBGZTo" resname="nav.maison">
+        <source>nav.maison</source>
+        <target>Démo SF</target>
+      </trans-unit>
+      <trans-unit id="gReZTHh" resname="nav.boutique">
+        <source>nav.boutique</source>
+        <target>Boutique</target>
+      </trans-unit>
+      <trans-unit id="8zWsB23" resname="nav.panier">
+        <source>nav.panier</source>
+        <target>Produit(s)</target>
+      </trans-unit>
+      <trans-unit id="TqjcdsD" resname="nav.contact">
+        <source>nav.contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="fWEdFXp" resname="nav.connexion">
+        <source>nav.connexion</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id=".WR_KEQ" resname="nav.premier_element">
+        <source>nav.premier_element</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="YfyStlV" resname="nav.deuxieme_element">
+        <source>nav.deuxieme_element</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="L2wdvfn" resname="nav.troisieme_element">
+        <source>nav.troisieme_element</source>
+        <target>Mon Compte</target>
+      </trans-unit>
+      <trans-unit id="DwRMzRv" resname="nav.quatrieme_element">
+        <source>nav.quatrieme_element</source>
+        <target>Mes Commandes</target>
+      </trans-unit>
+      <trans-unit id="DwRMzRV" resname="nav.cinquieme_element">
+        <source>nav.cinquieme_element</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="dOHkUgk" resname="nav.backOffice">
+        <source>nav.backOffice</source>
+        <target>BackOffice</target>
+      </trans-unit>
+      <trans-unit id="T6tv.Ke" resname="nav.recherche">
+        <source>nav.recherche</source>
+        <target>Chercher Produits...</target>
+      </trans-unit>
+      <trans-unit id="Em7QzUy" resname="default.index.titre_entete">
+        <source>default.index.titre_entete</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="t2LcsmI" resname="default.index.titre_page">
+        <source>default.index.titre_page</source>
+        <target>Démo Symfony</target>
+      </trans-unit>
+      <trans-unit id="0uCWXc6" resname="default.index.legende">
+        <source>default.index.legende</source>
+        <target>Ici rien à vendre, c'est juste pour apprendre</target>
+      </trans-unit>
+      <trans-unit id="roRHKrJ" resname="boutique.index.titre_entete">
+        <source>boutique.index.titre_entete</source>
+        <target>Boutique</target>
+      </trans-unit>
+      <trans-unit id="3LKs4Ft" resname="boutique.index.titre_page">
+        <source>boutique.index.titre_page</source>
+        <target>Boutique : {nbCategories} Rayons</target>
+      </trans-unit>
+      <trans-unit id="hk9nXeo" resname="boutique.rayon.titre_entete">
+        <source>boutique.rayon.titre_entete</source>
+        <target>Rayon "{libelle}"</target>
+      </trans-unit>
+      <trans-unit id="hk9nXeO" resname="boutique.rayon.titre_page">
+        <source>boutique.rayon.titre_page</source>
+        <target>Rayon "{libelle}" : {nbProduits} Produit(s)</target>
+      </trans-unit>
+      <trans-unit id="_PgWfef" resname="boutique.rayon.produits">
+        <source>boutique.rayon.produits</source>
+        <target>__boutique.rayon.produits</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

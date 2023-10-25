@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+    
+    {{ form_errors(form) }}
+
+    {{ form_row(form.email) }}
+    {{ form_row(form.password, { 'label': 'Mot de passe' }) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom, { 'label': 'Prénom' }) }}
+
+    <div class="col-md-12 btn-group" style="padding:0px">
+        <button class="btn btn-primary" type="submit"> Inscription </button>
+    </div>
+
+{{ form_end(form) }}
+
