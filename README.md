@@ -28,6 +28,6 @@ Le site cible était consultable et devait être atteint au cours des TP du modu
 
 ### Consultation du site
 
-Pour pouvoir consulter le site sans avoir à cloner le code ni réaliser d'installation, l'application a été déployée sur la plateforme Always Data. Le site est disponible à l'adresse : [https://alexandrelaurac.alwaysdata.net](https://alexandrelaurac.alwaysdata.net). Un usager "test", d'email "test@test.com" et de mot de passe "test" peut être utilisé, mais on peut également créer un nouvel usager (et passer des commandes).
+Pour pouvoir consulter le site sans avoir à cloner le code ni réaliser d'installation, l'application a été déployée sur la plateforme Alwaysdata. Le site est disponible à l'adresse : [https://laurac.alwaysdata.net](https://laurac.alwaysdata.net). Un usager "test", d'email "test@test.com" et de mot de passe "test" peut être utilisé, mais on peut également créer un nouvel usager (et passer des commandes).
 
 Si l'on veut tout de même consulter le site en local à partir du code disponible sur ce dépôt, il faut réaliser plusieurs installations (PHP, Symfony, Composer, un SGBDR), cloner le code, lancer la commande `composer install`, créer une base de données de nom "mi5" (code du module) destinée à recevoir les tables, configurer le fichier .env pour cette base (voir la ligne commençant par "DATABASE_URL") et enfin exécuter le fichier bdd.sql par la commande `psql --file bdd.sql -U mi5`. Le site se lance alors par la commande `symfony server:start --no-tls` et est disponible à l'adresse http://localhost:8000
